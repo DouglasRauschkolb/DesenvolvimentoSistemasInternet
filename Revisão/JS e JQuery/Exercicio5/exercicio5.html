@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="jquery-3.4.1.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <label>senha</label>
+    <input type="password"></input>
+
+    <script>
+
+        var texto_original = 'senha';
+        var texto_focus = 'a senha deve conter letras, e números, e não deve conter seu nome ou sua data de nascimento';
+
+        $("input").focus(function () {
+            $('label').text(texto_focus);
+        });
+
+        $("input").blur(function () {
+            $('label').text(texto_original);
+        });
+
+    </script>
+
+</body>
+
+</html>

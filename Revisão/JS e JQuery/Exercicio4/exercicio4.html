@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="exercicio4.css" media="screen" />
+        <script src="jquery-3.4.1.js" type="text/javascript"></script>  
+
+    <head>
+    <body>
+
+        <button>clique aqui</button>
+
+        <script>
+
+            var teste = false;
+
+            $(document).ready(function(){
+                $("button").click(function(evento){
+                    if(teste){
+                        $("button").removeAttr("class")
+                        teste = false;
+                    }else{
+                        $("button").attr("class", "ativo");
+                        teste = true;
+                    }                                        
+                });
+            });
+        </script>
+    </body>
+</html>

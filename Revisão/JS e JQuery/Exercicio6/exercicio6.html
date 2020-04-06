@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="jquery-3.4.1.js" type="text/javascript"></script>
+</head>
+
+<body>
+  <form>
+    <div class="input">
+      <label>Nome</label>
+      <input type="text" name="nome" id="nome" placeholder="Digite o nome">
+    </div>
+    <div class="input">
+      <label>CPF</label>
+      <input type="text" name="cpf" id="cpf" placeholder="Digite o CPF">
+      <span>Desconsiderar as pontuações, preenchendo apenas os números</span>
+    </div>
+    <div class="input">
+      <label>Sexo</label>
+      <select name="sexo" id="sexo">
+        <option value="">Selecione</option>
+        <option value="M">Masculino</option>
+        <option value="F">Feminino</option>
+      </select>
+    </div>
+    <div class="input">
+      <label>Senha</label>
+      <input type="password" name="senha" id="senha" placeholder="Digite a senha">
+    </div>
+    <button type="submit">Enviar</button>
+
+  </form>
+
+  <script>
+    $(document).ready(function(){
+      $("button").click(function(evento){
+
+        var nome  = $("#nome").val();
+        var cpf   = $("#cpf").val();
+        var sexo  = $("#sexo").val();
+        var senha = $("#senha").val();
+
+        var mensagem = ""
+
+        if(nome.length < 3){
+          mensagem = mensagem + 'O nome deve ter no mínimo 3 caracteres. \n'
+        }
+
+        if($.isNumeric(cpf) == false){
+          mensagem = mensagem + 'O CPF deve conter apenas números. \n'
+        }
+        if(cpf.length != 11){
+          mensagem = mensagem + 'O CPF deve ter 11 números. \n'
+        }
+
+        if(sexo != "M" && sexo != "F"){
+          mensagem = mensagem + 'É obrigatório informar o sexo. \n'
+        }
+
+        if(senha.length < 8){
+          mensagem = mensagem + 'A senha deve conter no mínimo 8 caracteres. \n'
+        }
+
+        if(mensagem === ""){
+          alert('Cadastro ok')
+        }else{
+          alert(mensagem);
+        }
+                                              
+      });
+    });
+
+  </script>
+</body>
+</html>
