@@ -9,8 +9,8 @@ final class LinkModel extends Model {
 
     public function selectAll() {
         $db = new Database();
-        $query = "SELECT links.*, categorias.nome AS nome_categoria
-                    FROM links 
+        $query = "SELECT links.*, categorias.nome AS nome_categoria 
+                    FROM links
                     LEFT JOIN categorias 
                       ON links.id_categoria = categorias.id";
         $data = $db->select($query);
@@ -24,12 +24,12 @@ final class LinkModel extends Model {
         return $arrLinks;
     }
 
-    /*public function selectOne($id) {
+    public function selectOne($id) {
         $db = new Database();
-        $query = "SELECT jogadores.*, times.nome AS nome_time 
-                    FROM jogadores  
-                    LEFT JOIN times ON jogadores.id_time = times.id 
-                   WHERE jogadores.id = :id";
+        $query = "SELECT links.*, categorias.nome AS nome_categoria 
+                    FROM links  
+                    LEFT JOIN categorias ON links.id_categoria = categorias.id 
+                   WHERE links.id = :id";
 
         // Array de valores variáveis da query para o bind
         $binds = [":id" => $id];
@@ -39,18 +39,21 @@ final class LinkModel extends Model {
             return null;
         }
 
-        $jogador = new JogadorVO($data[0]["id"], $data[0]["nome"], $data[0]["posicao"], $data[0]["overall"], $data[0]["id_time"], $data[0]["nome_time"]);
-        return $jogador;
+        $link = new LinkVO($row["id"], $row["link"], $row["titulo"], $row["descricao"], $row["palavras_chaves"], $row["imagem"], $row["id_categoria"], $row["nome_categoria"]);
+        return $link;
     }
 
     public function insert($vo) {
         $db = new Database();
-        $query = "INSERT INTO jogadores (nome, posicao, overall, id_time) VALUES (:nome, :posicao, :overall, :id_time)";
+        $query = "INSERT INTO links (link, titulo, descricao, palavras_chaves, imagem, id_categoria) 
+                             VALUES (:link, :titulo, :descricao, :palavras_chaves, :imagem, :id_categoria)";
         $binds = [
-            ":nome" => $vo->getNome(), 
-            ":posicao" => $vo->getPosicao(), 
-            ":overall" => $vo->getOverall(),
-            ":id_time" => $vo->getIdTime()
+            ":link" => $vo->getLink(), 
+            ":titulo" => $vo->getTitulo(), 
+            ":descricao" => $vo->getDescricao(),
+            ":palavras_chaves" => $vo->getPalavrasChaves(),
+            ":imagem" => $vo->getImagem(),
+            ":id_categoria" => $vo->getIdCategoria()
         ];
 
         $success = $db->execute($query, $binds);
@@ -64,12 +67,21 @@ final class LinkModel extends Model {
 
     public function update($vo) {
         $db = new Database();
-        $query = "UPDATE jogadores SET nome = :nome, posicao = :posicao, overall = :overall, id_time = :id_time WHERE id = :id";
+        $query = "UPDATE links 
+                     SET link = :link, 
+                         titulo = :titulo, 
+                         descricao = :descricao, 
+                         palavras_chaves = :palavras_chaves, 
+                         imagem = :imagem, 
+                         id_categoria = :id_categoria 
+                   WHERE id = :id";
         $binds = [
-            ":nome" => $vo->getNome(), 
-            ":posicao" => $vo->getPosicao(), 
-            ":overall" => $vo->getOverall(),
-            ":id_time" => $vo->getIdTime(),
+            ":link" => $vo->getLink(), 
+            ":titulo" => $vo->getTitulo(), 
+            ":descricao" => $vo->getDescricao(),
+            ":palavras_chaves" => $vo->getPalavrasChaves(),
+            ":imagem" => $vo->getImagem(),
+            ":id_categoria" => $vo->getIdCategoria(),
             ":id" => $vo->getId()
         ];
 
@@ -78,10 +90,10 @@ final class LinkModel extends Model {
 
     public function delete($id) {
         $db = new Database();
-        $query = "DELETE FROM jogadores WHERE id = :id";
+        $query = "DELETE FROM links WHERE id = :id";
         $binds = [":id" => $id];
 
         return $db->execute($query, $binds);
-    }*/
+    }
 
 }

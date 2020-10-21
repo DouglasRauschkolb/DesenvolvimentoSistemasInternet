@@ -7,6 +7,11 @@ use Controller\Controller;
 use Model\LinkModel;
 use Model\VO\LinkVO;
 
+use Model\CategoriaModel;
+use Model\VO\CategoriaVO;
+
+use Embed\Embed;
+
 final class LinkController extends Controller {
 
     public function selectAll() {
@@ -28,19 +33,30 @@ final class LinkController extends Controller {
             $vo = $model->selectOne($id);
         }
 
+        //Para popular opções de categoria
+        $categoriaModel = new CategoriaModel();
+        $categorias = $categoriaModel->selectAll();
+
         if(!isset($vo)) {
             die("Registro não existe!");
         }
 
         $this->loadView("formLink", [
-            "link" => $vo
+            "link" => $vo,
+            "categorias" => $categorias
         ]);
     }
 
     public function save() {
         $id = $_POST["id"];
         $model = new LinkModel();
-        //$vo = new LinkVO($_POST["id"], $_POST["nome"], $_POST["posicao"] ,$_POST["overall"], $_POST["time"]);
+
+        $embed = new Embed();
+        $info = $embed->get($_POST["link"]);
+
+        console.log($info->title);
+
+        $vo = new LinkVO($_POST["id"], $_POST["link"], $info->title, $info->description, $info->tags, $info->image, $_POST["categoria"]);
 
         if(empty($id)) {
             $return = $model->insert($vo);
