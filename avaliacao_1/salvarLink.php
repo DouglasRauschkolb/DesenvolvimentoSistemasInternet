@@ -2,7 +2,7 @@
 
 require_once __DIR__ . "/vendor/autoload.php";
 
-use Controller\JogadorController;
+use Controller\LinkController;
 
-$controller = new JogadorController();
+$controller = new LinkController();
 $controller->save();

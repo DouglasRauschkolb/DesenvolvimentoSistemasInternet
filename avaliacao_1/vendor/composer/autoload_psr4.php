@@ -7,6 +7,12 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Utils\\' => array($baseDir . '/classes'),
+    'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-factory/src', $vendorDir . '/psr/http-message/src'),
+    'Psr\\Http\\Client\\' => array($vendorDir . '/psr/http-client/src'),
     'Model\\' => array($baseDir . '/models'),
+    'ML\\JsonLD\\' => array($vendorDir . '/ml/json-ld'),
+    'HtmlParser\\' => array($vendorDir . '/oscarotero/html-parser/src'),
+    'Embed\\' => array($vendorDir . '/embed/embed/src'),
     'Controller\\' => array($baseDir . '/controllers'),
+    'Composer\\CaBundle\\' => array($vendorDir . '/composer/ca-bundle/src'),
 );

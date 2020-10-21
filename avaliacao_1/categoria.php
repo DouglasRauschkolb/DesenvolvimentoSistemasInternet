@@ -2,9 +2,8 @@
 
 require_once __DIR__ . "/vendor/autoload.php";
 
-use Controller\LinkController;
+use Controller\CategoriaController;
 
-$controller = new LinkController();
+$controller = new CategoriaController();
 $controller->selectOne();
-
 

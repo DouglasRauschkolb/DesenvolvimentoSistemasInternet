@@ -6,5 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    '09fc349b549513bf7f4291502426f919' => $vendorDir . '/embed/embed/src/functions.php',
     'cfe4039aa2a78ca88e07dadb7b1c6126' => $baseDir . '/config.php',
 );

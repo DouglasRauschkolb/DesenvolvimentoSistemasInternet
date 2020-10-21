@@ -7,6 +7,7 @@ namespace Composer\Autoload;
 class ComposerStaticInita854272355ee342f4bc49832d7bbb7b4
 {
     public static $files = array (
+        '09fc349b549513bf7f4291502426f919' => __DIR__ . '/..' . '/embed/embed/src/functions.php',
         'cfe4039aa2a78ca88e07dadb7b1c6126' => __DIR__ . '/../..' . '/config.php',
     );
 
@@ -15,13 +16,28 @@ class ComposerStaticInita854272355ee342f4bc49832d7bbb7b4
         array (
             'Utils\\' => 6,
         ),
+        'P' => 
+        array (
+            'Psr\\Http\\Message\\' => 17,
+            'Psr\\Http\\Client\\' => 16,
+        ),
         'M' => 
         array (
             'Model\\' => 6,
+            'ML\\JsonLD\\' => 10,
+        ),
+        'H' => 
+        array (
+            'HtmlParser\\' => 11,
+        ),
+        'E' => 
+        array (
+            'Embed\\' => 6,
         ),
         'C' => 
         array (
             'Controller\\' => 11,
+            'Composer\\CaBundle\\' => 18,
         ),
     );
 
@@ -30,13 +46,48 @@ class ComposerStaticInita854272355ee342f4bc49832d7bbb7b4
         array (
             0 => __DIR__ . '/../..' . '/classes',
         ),
+        'Psr\\Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
+        ),
+        'Psr\\Http\\Client\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-client/src',
+        ),
         'Model\\' => 
         array (
             0 => __DIR__ . '/../..' . '/models',
         ),
+        'ML\\JsonLD\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ml/json-ld',
+        ),
+        'HtmlParser\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/oscarotero/html-parser/src',
+        ),
+        'Embed\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/embed/embed/src',
+        ),
         'Controller\\' => 
         array (
             0 => __DIR__ . '/../..' . '/controllers',
+        ),
+        'Composer\\CaBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/composer/ca-bundle/src',
+        ),
+    );
+
+    public static $prefixesPsr0 = array (
+        'M' => 
+        array (
+            'ML\\IRI' => 
+            array (
+                0 => __DIR__ . '/..' . '/ml/iri',
+            ),
         ),
     );
 
@@ -45,6 +96,7 @@ class ComposerStaticInita854272355ee342f4bc49832d7bbb7b4
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInita854272355ee342f4bc49832d7bbb7b4::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInita854272355ee342f4bc49832d7bbb7b4::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInita854272355ee342f4bc49832d7bbb7b4::$prefixesPsr0;
 
         }, null, ClassLoader::class);
     }

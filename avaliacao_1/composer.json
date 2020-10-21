@@ -8,5 +8,8 @@
         "files": [
             "config.php"
         ]
+    },
+    "require": {
+        "embed/embed": "^4.2"
     }
 }
