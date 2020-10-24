@@ -54,7 +54,13 @@ final class LinkController extends Controller {
         $embed = new Embed();
         $info = $embed->get($_POST["link"]);
 
-        $vo = new LinkVO($_POST["id"], $_POST["link"], $info->title, $info->description, $info->keywords, $info->image, $_POST["categoria"]);
+        $keys = $info->keywords;
+
+        foreach ($keys as $key => $value) {
+            $palavras = $palavras . " " . $value;
+        }
+
+        $vo = new LinkVO($_POST["id"], $_POST["link"], $info->title, $info->description, $palavras, $info->image, $_POST["categoria"]);
 
         if(empty($id)) {
             $return = $model->insert($vo);
