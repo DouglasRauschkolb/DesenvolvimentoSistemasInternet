@@ -39,6 +39,9 @@
                                 <div class="card-body">
                                     <h5 class="card-title"><?php echo $link->getTitulo() ?></h5>
                                     <p class="card-text"><?php echo $link->getDescricao() ?></p>
+                                    <?php foreach(explode( "-", $link->getPalavrasChaves()) as $palavra){ ?>
+                                        <span class="badge badge-secondary"><?php echo $palavra ?></span>
+                                    <?php } ?>
                                     <a href="excluirLink.php?id=<?php echo $link->getId() ?>" class="btn btn-primary">Remover</a>
                                     <a href=<?php echo $link->getLink() ?>  class="btn btn-primary">Visitar</a>
                                 </div>
