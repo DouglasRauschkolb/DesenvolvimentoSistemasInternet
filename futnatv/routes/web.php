@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\ChannelController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::prefix("channels")->group(function () {
+    Route::get( "", [ChannelController::class, 'index'])->name("channels-list");
+    Route::get( "new", [ChannelController::class, 'create'])->name("channels-create");
+    Route::post( "", [ChannelController::class, 'store'])->name("channels-store");
+    Route::get( "{id}", [ChannelController::class, 'edit'])->name("channels-edit");
+    Route::put( "{id}", [ChannelController::class, 'update'])->name("channels-update");
+    Route::delete( "{id}", [ChannelController::class, 'destroy'])->name("channels-destroy");
 });
