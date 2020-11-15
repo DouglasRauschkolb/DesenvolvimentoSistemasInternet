@@ -1,6 +1,7 @@
-@extends('includes.layout');
+@extends('includes.layout')
 
 @section('content')
+@include('includes.menu')
 
 <div class="container">
     <div class="row mt-3">

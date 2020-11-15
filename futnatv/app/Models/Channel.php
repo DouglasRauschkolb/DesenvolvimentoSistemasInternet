@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Channel extends Model
 {
     public function matches(){
-        return $this->belongsToMany('App\Match');
+        return $this->belongsToMany('App\Models\Match');
     }
 }

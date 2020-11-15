@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Match extends Model
 {
     public function channels(){
-        return $this->belongsToMany('App\Channel');
+        return $this->belongsToMany('App\Models\Channel');
     }
 
     public function getDateAttribute($value) {
