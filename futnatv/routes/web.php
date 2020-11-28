@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ChannelController;
 use App\Http\Controllers\MatchController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
+
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -17,8 +20,8 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home');
-Route::get('logout', 'HomeController@logout')->name('logout');
+Route::get("/", [HomeController::class, 'index'])->name("home");
+Route::get("logout", [HomeController::class, 'logout'])->name("logout");
 
 
 Route::middleware(['auth'])->group(function(){

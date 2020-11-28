@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -14,7 +14,7 @@ class LoginController extends Controller {
 
     use AuthenticatesUsers;
 
-    protected $redirectTo = '/jogos';
+    protected $redirectTo = '/matches';
 
     public function __construct() {
         $this->middleware('guest')->except('logout');

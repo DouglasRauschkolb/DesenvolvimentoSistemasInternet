@@ -1,6 +1,8 @@
 @extends('includes.layout')
 
 @section('content')
+@include('includes.menu')
+
 <div class="container">
     <div class="row mt-5">
         <div class="text-centar mb-2">
@@ -15,7 +17,7 @@
                     <div class="card-body">
                         <h5 class="card-title"> {{ $match->team1 }} x {{ $match->team2 }} </h5>
                         <p class="card-text">{{ $match->formatted_date }}</p>
-                        @foreach ($channel as $url_image)
+                        @foreach ($match->channels()->get() as $channel )
                             @if ($channel->url_image)
                                 <img src="{{ asset('storage/channels/' . $channel->url_image) }}" alt="{{ $channel->name }}" class="img-thumbnail" style="max-width: 100px;" >
                             @else

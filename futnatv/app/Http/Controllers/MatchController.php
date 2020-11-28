@@ -40,9 +40,9 @@ class MatchController extends Controller {
         ];
 
         $messages = [
-            'team1.required' => 'O campo time 1 deve ser preenchido1',
+            'team1.required' => 'O campo time 1 deve ser preenchido',
             'team1.min' => 'O campo time 1 deve ter pelo menos 3 caracteres',
-            'team2.required' => 'O campo time 2 deve ser preenchido1',
+            'team2.required' => 'O campo time 2 deve ser preenchido',
             'team2.min' => 'O campo time 2 deve ter pelo menos 3 caracteres',
         ];
 
@@ -84,9 +84,9 @@ class MatchController extends Controller {
         ];
 
         $messages = [
-            'team1.required' => 'O campo time 1 deve ser preenchido1',
+            'team1.required' => 'O campo time 1 deve ser preenchido',
             'team1.min' => 'O campo time 1 deve ter pelo menos 3 caracteres',
-            'team2.required' => 'O campo time 2 deve ser preenchido1',
+            'team2.required' => 'O campo time 2 deve ser preenchido',
             'team2.min' => 'O campo time 2 deve ter pelo menos 3 caracteres',
         ];
 

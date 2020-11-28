@@ -7,7 +7,6 @@ use Illuminate\Http\Response;
 
 use App\Http\Controllers\Controller;
 use App\Models\Channel;
-use Dotenv\Validator;
 
 use Illuminate\Support\Facades\Validator;
 

@@ -10,7 +10,7 @@ use App\Models\User;
 
 use Illuminate\Support\Facades\Validator;
 
-class UserController {
+class UserController extends Controller{
 
     public function index() {
         $users = User::all();
@@ -58,7 +58,7 @@ class UserController {
 
         $user->save();
 
-        return redirect()->route("user-list");
+        return redirect()->route("users-list");
 
     }
 
@@ -78,7 +78,7 @@ class UserController {
         ];
 
         $messages = [
-            'name.required' => 'O campo nome deve ser preenchido1',
+            'name.required' => 'O campo nome deve ser preenchido',
             'name.min' => 'O campo nome deve ter pelo menos 3 caracteres',
             'email.required' => 'O campo e-mail deve ser preenchido1',
             'email.email' => 'O campo e-mail deve ser um endereço valido',
