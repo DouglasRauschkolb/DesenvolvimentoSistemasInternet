@@ -12,6 +12,7 @@
 
     <div class="row mt-3">
         <div class="col-12">
+            @include('includes.errors')
             @if ($match->id)
             <form action="{{ route('matches-update', [ 'id' => $match->id ]) }}" method="POST" >
             {{ method_field("PUT") }}

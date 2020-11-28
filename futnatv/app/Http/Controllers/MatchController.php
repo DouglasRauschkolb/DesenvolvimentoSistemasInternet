@@ -9,7 +9,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Channel;
 use App\Models\Match;
 
-class MatchController {
+use Illuminate\Support\Facades\Validator;
+
+class MatchController extends Controller {
 
     public function index() {
         $matches = Match::orderBy("date", "desc")->get();
@@ -32,6 +34,25 @@ class MatchController {
     }
 
     public function store(Request $request) {
+        $rules = [
+            'team1' => 'required|min:3',
+            'team2' => 'required|min:3'
+        ];
+
+        $messages = [
+            'team1.required' => 'O campo time 1 deve ser preenchido1',
+            'team1.min' => 'O campo time 1 deve ter pelo menos 3 caracteres',
+            'team2.required' => 'O campo time 2 deve ser preenchido1',
+            'team2.min' => 'O campo time 2 deve ter pelo menos 3 caracteres',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if($validator->fails()) {
+            return back()->withErrors($validator);
+        }
+
+
         $match = new Match();
         $match->team1 = $request->input("team1");
         $match->team2 = $request->input("team2");
@@ -57,6 +78,18 @@ class MatchController {
     }
 
     public function update(Request $request, $id) {
+        $rules = [
+            'team1' => 'required|min:3',
+            'team2' => 'required|min:3'
+        ];
+
+        $messages = [
+            'team1.required' => 'O campo time 1 deve ser preenchido1',
+            'team1.min' => 'O campo time 1 deve ter pelo menos 3 caracteres',
+            'team2.required' => 'O campo time 2 deve ser preenchido1',
+            'team2.min' => 'O campo time 2 deve ter pelo menos 3 caracteres',
+        ];
+
         $match = Match::find($id);
         $match->team1 = $request->input("team1");
         $match->team2 = $request->input("team2");

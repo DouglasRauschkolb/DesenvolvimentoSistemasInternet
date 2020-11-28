@@ -11,6 +11,12 @@
             <li class="nav-item">
                 <a href="{{ route('matches-list') }}" class="nav-link">Matches</a>
             </li>
+            <li class="nav-item">
+                <a href="{{ route('users-list') }}" class="nav-link">Users</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('logout') }}" class="nav-link">Lougout</a>
+            </li>
         </ul>
     </div>
 

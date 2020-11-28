@@ -12,6 +12,7 @@
 
     <div class="row mt-3">
         <div class="col-12">
+            @include('includes.errors')
             @if ($channel->id)
             <form action="{{ route('channels-update', [ 'id' => $channel->id ]) }}" method="POST" enctype="multipart/form-data">
             {{ method_field("PUT") }}

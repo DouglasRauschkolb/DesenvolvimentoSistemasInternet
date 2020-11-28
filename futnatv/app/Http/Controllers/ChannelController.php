@@ -7,8 +7,11 @@ use Illuminate\Http\Response;
 
 use App\Http\Controllers\Controller;
 use App\Models\Channel;
+use Dotenv\Validator;
 
-class ChannelController {
+use Illuminate\Support\Facades\Validator;
+
+class ChannelController extends Controller {
 
     public function index() {
         $channels = Channel::all();
@@ -27,13 +30,28 @@ class ChannelController {
     }
 
     public function store(Request $request) {
+        $rules = [
+            'name' => 'required|min:3'
+        ];
+
+        $messages = [
+            'name.required' => 'Ocampo nome deve ser preenchido1',
+            'name.min' => 'O campo nome deve ter pelo menos 3 caracteres'
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if($validator->fails()) {
+            return back()->withErrors($validator);
+        }
+
         $channel = new Channel();
 
         $channel->name = $request->input("name");
 
         if($request->file('logo')) {
             $filename = uniqid() . "." . $request->file('logo')->extension();
-            $path = $request->file('logo')->storeAs("channels", $filename);
+            $path = $request->file('logo')->storeAs("public/channels", $filename);
             $channel->url_image = $filename;
         }
 
@@ -51,13 +69,28 @@ class ChannelController {
     }
 
     public function update(Request $request, $id) {
+        $rules = [
+            'name' => 'required|min:3'
+        ];
+
+        $messages = [
+            'name.required' => 'Ocampo nome deve ser preenchido1',
+            'name.min' => 'O campo nome deve ter pelo menos 3 caracteres'
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if($validator->fails()) {
+            return back()->withErrors($validator);
+        }
+
         $channel = Channel::find($id);
 
         $channel->name = $request->input("name");
 
         if($request->file('logo')) {
             $filename = uniqid() . "." . $request->file('logo')->extension();
-            $path = $request->file('logo')->storeAs("channels", $filename);
+            $path = $request->file('logo')->storeAs("public/channels", $filename);
             $channel->url_image = $filename;
         }
 
