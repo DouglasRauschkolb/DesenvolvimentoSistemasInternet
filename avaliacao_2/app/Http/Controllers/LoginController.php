@@ -12,7 +12,7 @@ use App\Models\User;
 
 class LoginController extends Controller {
 
-    //use AuthenticatesUsers;
+    use AuthenticatesUsers;
 
     protected $redirectTo = '/posts';
 

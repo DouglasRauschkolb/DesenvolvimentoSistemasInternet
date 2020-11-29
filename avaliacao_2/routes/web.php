@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get("/", [HomeController::class, 'index'])->name("home");
+Route::get("/home", [HomeController::class, 'index'])->name("home");
 Route::get("logout", [HomeController::class, 'logout'])->name("logout");
 
 Route::middleware(['auth'])->group(function(){

@@ -56,7 +56,7 @@ class PostController extends Controller {
         $post->title = $request->input("title");
         $post->summary = $request->input("summary");
         $post->text = $request->input("text");
-        $post->active = $request->input("active");
+        $post->active = true;
 
         $post->save();
 

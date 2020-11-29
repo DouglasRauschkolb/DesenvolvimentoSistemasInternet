@@ -15,7 +15,7 @@ class HomeController extends Controller {
     }
 
     public function index() {
-        $posts = Post::whereDate('date', date('Y-m-d'))->get();
+        $posts = Post::whereDate('post_date', date('Y-m-d'))->get();
 
         return view('home', [
             'posts' => $posts
