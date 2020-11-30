@@ -25,7 +25,7 @@
                 @foreach ($post->tags()->get() as $tag )
                     <span class="badge badge-pill badge-dark">{{ $tag->name }}</span>
                 @endforeach
-                <p class="card-text"><small class="text-muted">{{ $post->post_date }}</small></p>
+                <p class="card-text"><small class="text-muted">{{ $post->formatted_date }}</small></p>
                 <form action="{{route("posts-destroy", ["id" => $post->id ]) }}" method="POST">
                     {{ method_field("DELETE") }}
                     {{ csrf_field() }}

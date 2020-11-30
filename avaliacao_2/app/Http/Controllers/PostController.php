@@ -22,6 +22,7 @@ class PostController extends Controller {
 
     public function create() {
         $post = new Post();
+        $post->post_date = date("Y-m-d");
 
         $tags = Tag::all();
 
