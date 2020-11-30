@@ -5,25 +5,24 @@
 
 <div class="container">
     <div class="row mt-5">
-        <div class="text-centar mb-2">
-            <h1 class="text-center mb-2">Avaliação 2</h1>
-            <p class="lead">Ultimas postagens</p>
+        <div class="text-center mb-3">
+            <h1 class="text-center mb-3">Ultimas postagens</h1>
         </div>
     </div>
-    <div class="row mt-3">
-        @foreach ($posts as $post)
-            <div class="col-4">
-                <div class="card text-center">
-                    <div class="card-body">
-                        <h5 class="card-title"> {{ $post->title }} </h5>
-                        <p class="card-text">{{ $post->post_date }}</p>
-                        @foreach ($post->tags()->get() as $tag )
-                            {{ $tag->name }}
-                        @endforeach
-                    </div>
-                </div>
+
+    @foreach ($posts as $post)
+        <div class="card mb-3">
+            <div class="card-header"> {{ $post->title }} </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ $post->summary }}</h5>
+                <p class="card-text">{{ $post->text }}</p>
+                @foreach ($post->tags()->get() as $tag )
+                    <span class="badge badge-pill badge-dark">{{ $tag->name }}</span>
+                @endforeach
+                <p class="card-text"><small class="text-muted">{{ $post->post_date }}</small></p>
             </div>
-        @endforeach
-    </div>
+        </div>
+    @endforeach
+
 </div>
 @endsection

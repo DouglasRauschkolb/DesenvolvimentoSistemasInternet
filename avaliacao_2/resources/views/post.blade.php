@@ -25,16 +25,16 @@
                     <input type="date" class="form-control" id="post_date" name="post_date" value="{{ $post->post_date }}">
                 </div>
                 <div class="form-group">
-                    <label for="name">Title</label>
+                    <label for="title">Title</label>
                     <input type="text" class="form-control" id="title" name="title" placeholder="Title" value="{{ $post->title }}">
                 </div>
                 <div class="form-group">
-                    <label for="name">Summary</label>
-                    <input type="text" class="form-control" id="summary" name="summary" placeholder="Summary" value="{{ $post->summary }}">
+                    <label for="summary">Summary</label>
+                    <textarea class="form-control" id="summary" rows="3" name="summary" placeholder="Summary" >{{ $post->summary }}</textarea>
                 </div>
                 <div class="form-group">
-                    <label for="name">Text</label>
-                    <input type="text" class="form-control" id="text" name="text" placeholder="Text" value="{{ $post->text }}">
+                    <label for="text">Text</label>
+                    <textarea class="form-control" id="text" rows="10" name="text" placeholder="Text" >{{ $post->text }}</textarea>
                 </div>
                 <div class="form-group">
                     <h4>Tags</h4>
@@ -49,9 +49,14 @@
                         </div>
                     @endforeach
                 </div>
-                <div class="form-group">
-                    <label for="name">Active</label>
-                    <input type="checkbox" class="form-control" id="active" name="active" placeholder="Active" value="{{ $post->active }}">
+                <h4>Active</h4>
+                <div class="custom-control custom-switch mb-3">
+                    @if ($post->active)
+                        <input type="checkbox" class="custom-control-input" name="active" id="active" checked>
+                    @else
+                        <input type="checkbox" class="custom-control-input" name="active" id="active" >
+                    @endif
+                    <label class="custom-control-label" for="active" ></label>
                 </div>
                 <button type="submit" class="btn btn-primary">Save</button>
             </form>

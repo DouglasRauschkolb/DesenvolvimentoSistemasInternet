@@ -56,7 +56,13 @@ class PostController extends Controller {
         $post->title = $request->input("title");
         $post->summary = $request->input("summary");
         $post->text = $request->input("text");
-        $post->active = true;
+        if ($request->input("active") == "on") {
+            $post->active = true;
+        } else {
+            $post->active = false;
+        }
+
+
 
         $post->save();
 
@@ -96,12 +102,16 @@ class PostController extends Controller {
             return back()->withErrors($validator);
         }
 
-        $post = new Post();
+        $post = Post::find($id);
         $post->post_date = $request->input("post_date");
         $post->title = $request->input("title");
         $post->summary = $request->input("summary");
         $post->text = $request->input("text");
-        $post->active = $request->input("active");
+        if ($request->input("active") == "on") {
+            $post->active = true;
+        } else {
+            $post->active = false;
+        }
 
         $post->save();
 
