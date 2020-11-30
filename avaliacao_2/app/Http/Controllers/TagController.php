@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
 use App\Http\Controllers\Controller;
 use App\Models\Tag;
@@ -34,8 +33,8 @@ class TagController extends Controller {
         ];
 
         $messages = [
-            'name.required' => 'O campo nome deve ser preenchido',
-            'name.min' => 'O campo nome deve ter pelo menos 3 caracteres'
+            'name.required' => 'O campo name deve ser preenchido',
+            'name.min' => 'O campo name deve ter pelo menos 3 caracteres'
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
@@ -67,8 +66,8 @@ class TagController extends Controller {
         ];
 
         $messages = [
-            'name.required' => 'O campo nome deve ser preenchido',
-            'name.min' => 'O campo nome deve ter pelo menos 3 caracteres'
+            'name.required' => 'O campo name deve ser preenchido',
+            'name.min' => 'O campo name deve ter pelo menos 3 caracteres'
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);

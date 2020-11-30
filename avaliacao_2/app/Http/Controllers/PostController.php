@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
 use App\Http\Controllers\Controller;
 use App\Models\Tag;
@@ -34,15 +33,22 @@ class PostController extends Controller {
 
     public function store(Request $request) {
         $rules = [
+            'post_date' => 'required',
             'title' => 'required|min:3',
-            'text' => 'required|min:3'
+            'summary' => 'required|min:20',
+            'text' => 'required|min:200',
+            'tags' => 'required'
         ];
 
         $messages = [
-            'title.required' => 'O campo titulo deve ser preenchido',
-            'title.min' => 'O campo titulo deve ter pelo menos 3 caracteres',
-            'text.required' => 'O campo texto deve ser preenchido',
-            'text.min' => 'O campo texto deve ter pelo menos 3 caracteres',
+            'post_date.required' => 'O campo date deve ser preenchido',
+            'title.required' => 'O campo title deve ser preenchido',
+            'title.min' => 'O campo title deve ter pelo menos 3 caracteres',
+            'summary.required' => 'O campo summary deve ser preenchido',
+            'summary.min' => 'O campo summary deve ter pelo menos 20 caracteres',
+            'text.required' => 'O campo text deve ser preenchido',
+            'text.min' => 'O campo text deve ter pelo menos 200 caracteres',
+            'tags.required' => 'Selecione ao menos uma tag'
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
@@ -61,8 +67,6 @@ class PostController extends Controller {
         } else {
             $post->active = false;
         }
-
-
 
         $post->save();
 
@@ -85,15 +89,22 @@ class PostController extends Controller {
 
     public function update(Request $request, $id) {
         $rules = [
+            'post_date' => 'required',
             'title' => 'required|min:3',
-            'text' => 'required|min:3'
+            'summary' => 'required|min:20',
+            'text' => 'required|min:200',
+            'tags' => 'required'
         ];
 
         $messages = [
-            'title.required' => 'O campo titulo deve ser preenchido',
-            'title.min' => 'O campo titulo deve ter pelo menos 3 caracteres',
-            'text.required' => 'O campo texto deve ser preenchido',
-            'text.min' => 'O campo texto deve ter pelo menos 3 caracteres',
+            'post_date.required' => 'O campo date deve ser preenchido',
+            'title.required' => 'O campo title deve ser preenchido',
+            'title.min' => 'O campo title deve ter pelo menos 3 caracteres',
+            'summary.required' => 'O campo summary deve ser preenchido',
+            'summary.min' => 'O campo summary deve ter pelo menos 20 caracteres',
+            'text.required' => 'O campo text deve ser preenchido',
+            'text.min' => 'O campo text deve ter pelo menos 200 caracteres',
+            'tags.required' => 'Selecione ao menos uma tag'
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
